@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TicTacToe.Common\TicTacToe.Common.csproj" />
+    <ProjectReference Include="..\TicTacToe.Repository\TicTacToe.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
