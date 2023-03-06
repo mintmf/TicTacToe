@@ -22,15 +22,27 @@ namespace TicTacToe.BusinessLogic
             return game;
         }
 
-        public async Task<TicTacToeGame> MakeMoveAsync(Move move)
+        public async Task<MoveResult> MakeMoveAsync(Move move)
         {
             var game = await FileRepository.GetGameAsync();
 
-            game.UpdateBoard(move);
+            var moveResult = new MoveResult
+            {
+                ErrorMessage = game.GetErrorMessage(move)
+            };
+
+            if (!string.IsNullOrEmpty(moveResult.ErrorMessage)) 
+            {
+                return moveResult;
+            }
+
+            game.ProcessMove(move);
 
             await FileRepository.SaveGameAsync(game);
 
-            return game;
+            moveResult.Game = game;
+
+            return moveResult;
         }
     }
 }

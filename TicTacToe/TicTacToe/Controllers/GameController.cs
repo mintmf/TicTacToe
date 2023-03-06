@@ -20,9 +20,14 @@ namespace TicTacToe.Controllers
         [Route("move")]
         public async Task<IActionResult> MakeMoveAsync(Move move)
         {
-            var game = await GameService.MakeMoveAsync(move);
+            var moveResult = await GameService.MakeMoveAsync(move);
 
-            return Ok(game);
+            if (!string.IsNullOrEmpty(moveResult.ErrorMessage))
+            {
+                return BadRequest(moveResult);
+            }
+
+            return Ok(moveResult);
         }
 
         [HttpPost]
