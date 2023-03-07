@@ -16,6 +16,19 @@ namespace TicTacToe.Controllers
             GameService = gameService;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetGameAsync(string gameID)
+        {
+            var game = await GameService.GetGameAsync(gameID);
+
+            if (game == null)
+            {
+                return BadRequest();
+            }
+
+            return Ok(game);
+        }
+
         [HttpPost]
         [Route("move")]
         public async Task<IActionResult> MakeMoveAsync(Move move)

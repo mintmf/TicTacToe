@@ -22,9 +22,25 @@ namespace TicTacToe.BusinessLogic
             return game;
         }
 
+        public async Task<TicTacToeGame> GetGameAsync(string gameID)
+        {
+            var game = await FileRepository.GetGameAsync(gameID);
+
+            return game;
+        }
+
         public async Task<MoveResult> MakeMoveAsync(Move move)
         {
-            var game = await FileRepository.GetGameAsync();
+            var game = await FileRepository.GetGameAsync(move.GameID);
+
+            if (game == null)
+            {
+                return new MoveResult
+                {
+                    Game = null,
+                    ErrorMessage = "Game not found"
+                };
+            }
 
             var moveResult = new MoveResult
             {

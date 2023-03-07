@@ -12,12 +12,20 @@ namespace TicTacToe.Common.Models
 
         public PlayerType ActivePlayer { get; set; }
 
+        public string GameID { get; set; }
+
         public TicTacToeGame()
         {
             InitializeBoard();
             IsFininshed = false;
             ActivePlayer = PlayerType.X;
             Winner = null;
+            GameID = GenerateGameID();
+        }
+
+        private string GenerateGameID()
+        {
+            return Guid.NewGuid().ToString();
         }
 
         private void InitializeBoard()
@@ -30,7 +38,7 @@ namespace TicTacToe.Common.Models
             };
         }
 
-        private void EndGame(PlayerType winner)
+        private void EndGame(PlayerType? winner)
         {
             IsFininshed = true;
             Winner = winner;
@@ -77,8 +85,26 @@ namespace TicTacToe.Common.Models
                 return;
             }
         }
-        private void CheckIfFinished(PlayerType type)
+
+        private void CheckEmptyCells()
         {
+            foreach (var x in Board)
+            {
+                foreach (var y in x)
+                {
+                    if (y == null)
+                    {
+                        return;
+                    }
+                }
+            }
+
+            EndGame(null);
+        }
+
+        private void CheckIsFinished(PlayerType type)
+        {
+            CheckEmptyCells();
             CheckRows(type);
             CheckColumns(type);
             CheckDiagonals(type);
@@ -89,6 +115,10 @@ namespace TicTacToe.Common.Models
             if (move == null)
             {
                 return "Move is null";
+            }
+            if (move.GameID != GameID)
+            {
+                return "Invalid GameID";
             }
             if (IsFininshed == true)
             {
@@ -131,7 +161,7 @@ namespace TicTacToe.Common.Models
             {
                 UpdateBoard(move);
                 UpdateActivePlayer();
-                CheckIfFinished(move.PlayerType);
+                CheckIsFinished(move.PlayerType);
             }
         }
     }

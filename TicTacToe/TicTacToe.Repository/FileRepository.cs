@@ -7,19 +7,44 @@ namespace TicTacToe.Repository
 {
     public class FileRepository : IFileRepository
     {
-        private static readonly string path = "../../Games/database.txt";
+        //private static readonly string path = "../../Games/database.txt";
+        private static readonly string path = "Games/";
+
+        private string GetGamePath(string gameID)
+        {
+            return path + gameID + ".txt";
+        }
+
+        private void CreateDirectoryIfNotExists()
+        {
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+        }
 
         public async Task SaveGameAsync(TicTacToeGame game)
         {
-            using (StreamWriter outputFile = new StreamWriter(path))
+            CreateDirectoryIfNotExists();
+
+            var gamePath = GetGamePath(game.GameID);
+
+            using (StreamWriter outputFile = new StreamWriter(gamePath))
             {
                 await outputFile.WriteAsync(JsonConvert.SerializeObject(game));
             }
         }
 
-        public async Task<TicTacToeGame> GetGameAsync()
+        public async Task<TicTacToeGame> GetGameAsync(string GameID)
         {
-            using (StreamReader inputFile = new StreamReader(path))
+            var gamePath = GetGamePath(GameID);
+
+            if (!File.Exists(gamePath))
+            {
+                return null;
+            }
+
+            using (StreamReader inputFile = new StreamReader(gamePath))
             {
                 var gameJson = await inputFile.ReadToEndAsync();
 

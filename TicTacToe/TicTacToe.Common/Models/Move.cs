@@ -2,6 +2,7 @@
 {
     public class Move
     {
+        public string GameID { get; set; }
         public PlayerType PlayerType { get; set; }
         public int CheckPointX { get; set; }
         public int CheckPointY { get; set; }
