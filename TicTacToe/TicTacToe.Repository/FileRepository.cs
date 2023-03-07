@@ -7,7 +7,6 @@ namespace TicTacToe.Repository
 {
     public class FileRepository : IFileRepository
     {
-        //private static readonly string path = "../../Games/database.txt";
         private static readonly string path = "Games/";
 
         private string GetGamePath(string gameID)
