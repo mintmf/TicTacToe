@@ -7,7 +7,7 @@ namespace TicTacToe.Repository
 {
     public class FileRepository : IFileRepository
     {
-        private static readonly string path = "database.txt";
+        private static readonly string path = "../../Games/database.txt";
 
         public async Task SaveGameAsync(TicTacToeGame game)
         {

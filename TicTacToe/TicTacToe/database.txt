@@ -1,1 +1,1 @@
-{"Board":[[1,null,null],[2,null,null],[null,null,null]],"IsFininshed":false,"Winner":null,"ActivePlayer":1}
+{"Board":[[null,null,null],[null,null,null],[null,null,null]],"IsFininshed":false,"Winner":null,"ActivePlayer":1}

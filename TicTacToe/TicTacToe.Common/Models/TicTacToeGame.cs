@@ -36,17 +36,21 @@ namespace TicTacToe.Common.Models
             Winner = winner;
         }
 
-        private void CheckIfFinished(PlayerType type)
+        private void CheckRows(PlayerType type)
         {
             for (int i = 0; i < Board[0].Length; i++)
             {
                 if (Board[i][0] == type && Board[i][1] == type && Board[i][2] == type)
                 {
                     EndGame(type);
-                    
+
                     return;
                 }
             }
+        }
+
+        private void CheckColumns(PlayerType type)
+        {
             for (int j = 0; j < Board[0].Length; j++)
             {
                 if (Board[0][j] == type && Board[1][j] == type && Board[2][j] == type)
@@ -58,8 +62,30 @@ namespace TicTacToe.Common.Models
             }
         }
 
+        private void CheckDiagonals(PlayerType type)
+        {
+            if (Board[0][0] == type && Board[1][1] == type && Board[2][2] == type)
+            {
+                EndGame(type);
+
+                return;
+            }
+            if (Board[2][0] == type && Board[1][1] == type && Board[0][2] == type)
+            {
+                EndGame(type);
+
+                return;
+            }
+        }
+        private void CheckIfFinished(PlayerType type)
+        {
+            CheckRows(type);
+            CheckColumns(type);
+            CheckDiagonals(type);
+        }
+
         public string GetErrorMessage(Move move)
-        { 
+        {
             if (move == null)
             {
                 return "Move is null";
