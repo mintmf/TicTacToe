@@ -4,15 +4,29 @@ using TicTacToe.Repository;
 
 namespace TicTacToe.BusinessLogic
 {
+    /// <summary>
+    /// Сервис игры
+    /// </summary>
     public class GameService : IGameService
     {
+        /// <summary>
+        /// Репозиторий
+        /// </summary>
         private IFileRepository FileRepository { get; set; }
 
+        /// <summary>
+        /// Конструктор сервиса игры
+        /// </summary>
+        /// <param name="fileRepository"></param>
         public GameService(IFileRepository fileRepository)
         {
             FileRepository = fileRepository;
         }
 
+        /// <summary>
+        /// Создание игры
+        /// </summary>
+        /// <returns></returns>
         public async Task<TicTacToeGame> CreateNewGameAsync()
         {
             var game = new TicTacToeGame();
@@ -22,6 +36,11 @@ namespace TicTacToe.BusinessLogic
             return game;
         }
 
+        /// <summary>
+        /// Получение игры
+        /// </summary>
+        /// <param name="gameID"></param>
+        /// <returns></returns>
         public async Task<TicTacToeGame> GetGameAsync(string gameID)
         {
             var game = await FileRepository.GetGameAsync(gameID);
@@ -29,8 +48,22 @@ namespace TicTacToe.BusinessLogic
             return game;
         }
 
+        /// <summary>
+        /// Обработка хода
+        /// </summary>
+        /// <param name="move"></param>
+        /// <returns></returns>
         public async Task<MoveResult> MakeMoveAsync(Move move)
         {
+            if (move == null)
+            {
+                return new MoveResult
+                {
+                    Game = null,
+                    ErrorMessage = "Move is null"
+                };
+            }
+
             var game = await FileRepository.GetGameAsync(move.GameID);
 
             if (game == null)

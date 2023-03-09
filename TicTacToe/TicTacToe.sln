@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicTacToe", "TicTacToe\TicTacToe.csproj", "{F38CAC93-9C8C-44C3-A085-876539941C5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.BusinessLogic", "TicTacToe.BusinessLogic\TicTacToe.BusinessLogic.csproj", "{2D1E6B2B-FE0C-4EBE-A40E-9CEDAC67329B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicTacToe.BusinessLogic", "TicTacToe.BusinessLogic\TicTacToe.BusinessLogic.csproj", "{2D1E6B2B-FE0C-4EBE-A40E-9CEDAC67329B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Repository", "TicTacToe.Repository\TicTacToe.Repository.csproj", "{BC2E1522-3C07-4B70-950F-23EE8508621A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicTacToe.Repository", "TicTacToe.Repository\TicTacToe.Repository.csproj", "{BC2E1522-3C07-4B70-950F-23EE8508621A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Common", "TicTacToe.Common\TicTacToe.Common.csproj", "{A624B0C7-6A33-49D9-8DB6-37C243817A0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicTacToe.Common", "TicTacToe.Common\TicTacToe.Common.csproj", "{A624B0C7-6A33-49D9-8DB6-37C243817A0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.UnitTests", "TicTacToeTest\TicTacToe.UnitTests.csproj", "{D2BEFC36-F0C7-436E-BEB4-B3CADD05C499}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A624B0C7-6A33-49D9-8DB6-37C243817A0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A624B0C7-6A33-49D9-8DB6-37C243817A0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A624B0C7-6A33-49D9-8DB6-37C243817A0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2BEFC36-F0C7-436E-BEB4-B3CADD05C499}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2BEFC36-F0C7-436E-BEB4-B3CADD05C499}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2BEFC36-F0C7-436E-BEB4-B3CADD05C499}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2BEFC36-F0C7-436E-BEB4-B3CADD05C499}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

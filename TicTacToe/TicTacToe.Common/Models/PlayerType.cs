@@ -4,6 +4,9 @@ using System.Text;
 
 namespace TicTacToe.Common.Models
 {
+    /// <summary>
+    /// Тип игрока
+    /// </summary>
     public enum PlayerType
     {
         X = 1,

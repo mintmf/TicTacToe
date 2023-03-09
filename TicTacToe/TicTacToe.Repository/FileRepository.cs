@@ -5,10 +5,18 @@ using TicTacToe.Common.Models;
 
 namespace TicTacToe.Repository
 {
+    /// <summary>
+    /// Репозиторий
+    /// </summary>
     public class FileRepository : IFileRepository
     {
         private static readonly string path = "Games/";
 
+        /// <summary>
+        /// Путь до файла с игрой
+        /// </summary>
+        /// <param name="gameID"></param>
+        /// <returns></returns>
         private string GetGamePath(string gameID)
         {
             return path + gameID + ".txt";
@@ -22,6 +30,11 @@ namespace TicTacToe.Repository
             }
         }
 
+        /// <summary>
+        /// Сохранение игры
+        /// </summary>
+        /// <param name="game"></param>
+        /// <returns></returns>
         public async Task SaveGameAsync(TicTacToeGame game)
         {
             CreateDirectoryIfNotExists();
@@ -34,6 +47,11 @@ namespace TicTacToe.Repository
             }
         }
 
+        /// <summary>
+        /// Получние игры
+        /// </summary>
+        /// <param name="GameID"></param>
+        /// <returns></returns>
         public async Task<TicTacToeGame> GetGameAsync(string GameID)
         {
             var gamePath = GetGamePath(GameID);
